@@ -36,7 +36,7 @@ export default function AddProduct() {
         }
 
         try {
-            const res = await fetch("/api/email/addProduct", {
+            const res = await fetch("/api/product/addProduct", {
                 method: "POST",
                 body: data,
             });
