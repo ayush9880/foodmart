@@ -10,5 +10,5 @@ router.delete("/deleteproduct/:id", deleteProduct)
 router.put("/updateproduct/:id", upload.single("img"), updateProduct)
 router.get("/allProduct", getAllProducts)
 router.get("/getProduct/:id", getProductById);
-
-module.exports = router;
+ console.log("")
+module.exports = router; 

@@ -76,7 +76,7 @@ export default function TrendingProducts() {
         quantity: qty,
         img: { path: imgPath }, // ✅ Wrap in object if your backend expects that!
       }),
-    });
+    }); 
 
     const data = await res.json();
     if (data.success) {
