@@ -17,7 +17,7 @@ router.post("/new-password", newPassword)
 router.post("/reset-password", resetPassword)
 router.delete("/deleteuser/:id", deleteUserController);
 router.put("/updateUser/:email", updateUserController)
-router.get("/getProfile", verifyToken, getProfileController)
+router.get("/getProfile", verifyToken, getProfileController) 
 
 // cart Routes  .module.......................................................   
 router.post("./addtocart",addToCart);

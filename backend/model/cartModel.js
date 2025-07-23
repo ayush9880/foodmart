@@ -6,11 +6,11 @@ const cartSchema = new mongoose.Schema({
         {
             productId: { type: String, required: true },
             name: String,
-            price: Number,
+            price: Number, 
             quantity: Number,
             img: { filename: String, path: String },
         },
     ],
-});
+});  
 
 module.exports = mongoose.model('Cart', cartSchema);
