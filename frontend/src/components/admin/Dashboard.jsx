@@ -10,14 +10,14 @@ export default function Dashboard() {
         const fetchStats = async () => {
             try {
                 // Fetch total users
-                const userRes = await fetch("/api/email/allUsers");
+                const userRes = await fetch("/api/user/allUsers");
                 const userData = await userRes.json();
                 if (userData.success) {
                     setUserCount(userData.data.length);
                 }
 
                 // Fetch total products
-                const productRes = await fetch("/api/email/allProduct");
+                const productRes = await fetch("/api/product/allProduct");
                 const productData = await productRes.json();
                 if (productData.success) {
                     const products = productData.data;
