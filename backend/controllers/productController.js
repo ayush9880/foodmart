@@ -56,9 +56,9 @@ const deleteProduct = async (req, res) => {
 const updateProduct = async (req, res) => {
     try {
         const { id } = req.params;
-        const { name, price, stock, category, description } = req.body;
+        const { name, price, stock, category, } = req.body;
 
-        let updated = { name, price, stock, category, description };
+        let updated = { name, price, stock, category, };
 
         if (req.file) {
             updated.image = {
