@@ -4,10 +4,11 @@ const path = require("path");
 let finalpath = path.join(__dirname, "../uploads")
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, "uploads/")
+        cb(null, finalpath)
     },
     filename: function (req, file, cb) {
-        cb(null, file.originalname)
+        const uniqueSuffix = Date.now() + '-' + file.originalname
+        cb(null, uniqueSuffix)
     }
 })
 
