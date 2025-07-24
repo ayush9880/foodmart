@@ -46,50 +46,50 @@ export default function TrendingProducts() {
     }));
   };
 
- const handleAddToCart = async (product) => {
-  const qty = quantities[product._id] || 1;
+  const handleAddToCart = async (product) => {
+    const qty = quantities[product._id] || 1;
 
-  try {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      alert("Please login to add items to your cart.");
-      return;
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        alert("Please login to add items to your cart.");
+        return;
+      }
+
+      // Make sure you ALWAYS send the correct image path!
+      const imgPath = product.image?.path
+        ? product.image.path
+        : typeof product.image === "string"
+          ? product.image
+          : "placeholder.jpg";
+
+      const res = await fetch("/api/user/addToCart", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          productId: product._id,
+          name: product.name,
+          price: product.price,
+          quantity: qty,
+          img: { path: imgPath }, // ✅ Wrap in object if your backend expects that!
+        }),
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        alert(`✅ Added ${product.name} (Qty: ${qty}) to cart!`);
+      } else {
+        console.error(data);
+        alert("❌ Failed to add to cart: " + data.message);
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong while adding to cart.");
     }
-
-    // Make sure you ALWAYS send the correct image path!
-    const imgPath = product.image?.path
-      ? product.image.path
-      : typeof product.image === "string"
-        ? product.image
-        : "placeholder.jpg";
-
-    const res = await fetch("/api/user/addToCart", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        productId: product._id,
-        name: product.name,
-        price: product.price,
-        quantity: qty,
-        img: { path: imgPath }, // ✅ Wrap in object if your backend expects that!
-      }),
-    }); 
-
-    const data = await res.json();
-    if (data.success) {
-      alert(`✅ Added ${product.name} (Qty: ${qty}) to cart!`);
-    } else {
-      console.error(data);
-      alert("❌ Failed to add to cart: " + data.message);
-    }
-  } catch (err) {
-    console.error(err);
-    alert("Something went wrong while adding to cart.");
-  }
-};
+  };
 
 
   return (
@@ -123,7 +123,10 @@ export default function TrendingProducts() {
                 className="w-[278px] rounded-lg overflow-hidden shadow-lg bg-white p-4"
               >
                 <div className="relative">
-                  <img className="w-full h-48 object-cover rounded-md" src={product.image.path} alt={product.name} />
+                  <img className="w-full h-48 object-cover rounded-md"
+                    src={product.image.path}
+                    alt={product.name}
+                  />
                   <div className="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">
                     -30%
                   </div>

@@ -8,7 +8,7 @@ const addProductController = async (req, res) => {
         if (req.file) {
             image = {
                 filename: req.file.filename,
-                path: "https://ecommerce-food-mart.onrender.com/uploads/" + req.file.filename,
+                path: "https://ecommerce-food-mart.onrender.com/uploads/uploads" + req.file.filename,
             };
         }
         const newProduct = new Product({
@@ -63,7 +63,7 @@ const updateProduct = async (req, res) => {
         if (req.file) {
             updated.image = {
                 filename: req.file.filename,
-                path: "https://ecommerce-food-mart.onrender.com/uploads/" + req.file.filename, // ✅ store relative path!
+                path: "https://ecommerce-food-mart.onrender.com/uploads/uploads" + req.file.filename, // ✅ store relative path!
             };
         }
 
