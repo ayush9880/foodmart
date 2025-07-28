@@ -3,7 +3,6 @@ export default function AdminNavbar() {
         <header className="flex items-center justify-between px-8 py-4 bg-white border-b border-green-100 shadow-sm">
             {/* Logo & Brand */}
             <div className="flex items-center gap-3">
-                <img src="/foodmart.png" alt="FoodMart" className="w-12 h-12" />
                 <div className="leading-tight">
                     <span className="block text-2xl font-extrabold text-green-600">
                         Food<span className="text-orange-500">Mart</span>

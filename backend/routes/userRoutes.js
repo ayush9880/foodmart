@@ -20,7 +20,7 @@ router.put("/updateUser/:email", updateUserController)
 router.get("/getProfile", verifyToken, getProfileController) 
 
 // cart Routes  .module.......................................................   
-router.post("./addtocart",addToCart);
+router.post("/addtocart",addToCart);
 router.get("/cart", verifyToken, getCart);
 router.delete("/removeFromCart/:itemId", verifyToken, removeFromCart);  
 

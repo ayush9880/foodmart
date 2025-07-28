@@ -63,7 +63,7 @@ export default function TrendingProducts() {
           ? product.image
           : "placeholder.jpg";
 
-      const res = await fetch("/api/user/addToCart", {
+      const res = await fetch("/api/user/addtocart", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

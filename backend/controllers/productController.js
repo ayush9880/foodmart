@@ -142,41 +142,41 @@ const getProductById = async (req, res) => {
 
 
 const addToCartController = async (req, res) => {
-  try {
-    const { productId, quantity } = req.body;
-    const userId = req.user.id;
+    try {
+        const { productId, quantity } = req.body;
+        const userId = req.user.id;
 
-    if (!mongoose.Types.ObjectId.isValid(productId)) {
-      return res.status(400).json({ success: false, message: "Invalid product ID" });
+        if (!mongoose.Types.ObjectId.isValid(productId)) {
+            return res.status(400).json({ success: false, message: "Invalid product ID" });
+        }
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ success: false, message: "User not found" });
+        }
+
+        if (!user.cart) {
+            user.cart = [];
+        }
+
+        const qty = Math.max(1, parseInt(quantity) || 1);
+
+        const cartItem = user.cart.find(item => item.product.toString() === productId);
+        if (cartItem) {
+            cartItem.quantity += qty;
+        } else {
+            user.cart.push({ product: productId, quantity: qty });
+        }
+
+        await user.save();
+
+        res.status(200).json({
+            success: true,
+            message: "Product added to cart",
+            cart: user.cart,
+        });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
     }
-const user = await User.findById(userId);
-if (!user) {
-  return res.status(404).json({ success: false, message: "User not found" });
-}
-
-if (!user.cart) {
-  user.cart = [];
-}
-
-    const qty = Math.max(1, parseInt(quantity) || 1);
-
-    const cartItem = user.cart.find(item => item.product.toString() === productId);
-    if (cartItem) {
-      cartItem.quantity += qty;
-    } else {
-      user.cart.push({ product: productId, quantity: qty });
-    }
-
-    await user.save();
-
-    res.status(200).json({
-      success: true,
-      message: "Product added to cart",
-      cart: user.cart,
-    });
-  } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
-  }
 };
 
 
