@@ -37,7 +37,7 @@ const getCart = async (req, res) => {
     const userId = req.user.id; // ✅ from JWT
     try {
         const cart = await Cart.findOne({ userId });
-        if (!cart) {
+              if (!cart) {
             return res.status(200).json({ success: true, cart: { items: [] } });
         }
         res.status(200).json({ success: true, cart });
