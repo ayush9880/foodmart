@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function First(){
+export default function First() {
     return (
         <>
             <div className="w-full min-h-screen bg-green-50 flex flex-col md:flex-row items-center justify-center px-6 py-12 gap-8">
@@ -23,13 +23,14 @@ export default function First(){
                     </div>
 
                     {/* Smoothie Bottle */}
-                    <div className="flex-shrink-0 flex justify-center items-center">
+                    <div className="flex justify-center items-center w-full px-4 py-4">
                         <img
                             src="https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/NI_CATALOG/IMAGES/CIW/2025/3/11/28c25363-4565-4f25-8a3b-2b1273743210_454359_1.png"
                             alt="Smoothie Bottle"
-                            className="w-40 md:w-80 rotate-[30deg] mt-[100px] mx-[50px]"
+                            className="w-32 sm:w-48 md:w-60 lg:w-72 xl:w-80 rotate-12 mt-10 object-contain"
                         />
                     </div>
+
                 </div>
 
 
