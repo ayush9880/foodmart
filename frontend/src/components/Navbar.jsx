@@ -219,7 +219,7 @@ export default function Navbar() {
                             to="/cart"
                             className="flex items-center py-2 px-3 text-gray-700 hover:text-orange-600"
                         >
-                            <FaShoppingCart size={22} className="mr-1" /> ₹{cartTotal}
+                            <FaShoppingCart size={22} className="mr-1" />
                         </NavLink>
                     </li>
                 </ul>

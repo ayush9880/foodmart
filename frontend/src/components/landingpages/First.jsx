@@ -27,7 +27,7 @@ export default function First() {
                         <img
                             src="https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/NI_CATALOG/IMAGES/CIW/2025/3/11/28c25363-4565-4f25-8a3b-2b1273743210_454359_1.png"
                             alt="Smoothie Bottle"
-                            className="w-32 sm:w-48 md:w-60 lg:w-72 xl:w-80 rotate-12 mt-10 object-contain"
+                            className="w-32 sm:w-48 md:w-60 lg:w-72 xl:w-80 rotate-16 mt-10 object-contain"
                         />
                     </div>
 
