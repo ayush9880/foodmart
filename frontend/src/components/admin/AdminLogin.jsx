@@ -62,7 +62,7 @@ export default function AdminLogin() {
                 </div>
 
                 <button className="bg-cyan-500 text-white rounded-md px-4 py-2 hover:bg-red-500 w-full">
-                  Submit
+                  Login
                 </button>
               </div>
             </form>
