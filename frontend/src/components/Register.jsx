@@ -36,7 +36,7 @@ export default function Register() {
     }
 
     try {
-      const response = await fetch("/api/email/registration", {
+      const response = await fetch("/api/user/registration", {
         method: "POST",
         body: formData // ✅ send FormData
       });
