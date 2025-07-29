@@ -48,7 +48,6 @@ export default function TrendingProducts() {
 
   const handleAddToCart = async (product) => {
     const qty = quantities[product._id] || 1;
-
     try {
       const token = localStorage.getItem("token");
       if (!token) {

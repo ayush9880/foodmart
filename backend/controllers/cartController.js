@@ -16,7 +16,7 @@ const addToCart = async (req, res) => {
         } else {
             const itemIndex = cart.items.findIndex(
                 (item) => item.productId === productId
-            );  
+            );
 
             if (itemIndex > -1) {
                 cart.items[itemIndex].quantity += quantity;
@@ -69,6 +69,8 @@ const removeFromCart = async (req, res) => {
 };
 
 
-module.exports = { addToCart, getCart, removeFromCart }
+
+
+module.exports = { addToCart, getCart, removeFromCart}
 
 

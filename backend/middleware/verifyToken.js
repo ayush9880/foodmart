@@ -1,7 +1,7 @@
 // middleware/auth.js
 const jwt = require('jsonwebtoken');
 
- verifyToken = (req, res, next) => {
+const verifyToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
     return res.status(401).json({ success: false, message: 'No token provided' });
@@ -18,4 +18,3 @@ const jwt = require('jsonwebtoken');
 };
 
 module.exports = verifyToken;
-

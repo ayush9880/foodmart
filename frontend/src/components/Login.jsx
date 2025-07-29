@@ -29,7 +29,7 @@ export default function Login() {
                     theme: "light",
                     transition: Bounce,
                 });
-                setTimeout(() => nav('/profile'), 1000);
+                setTimeout(() => nav('/'), 1000);
             } else {
                 toast.error(res.message || "User not defined", {
                     position: "top-right",
@@ -89,7 +89,7 @@ export default function Login() {
                                     type="submit"
                                     className="bg-cyan-500 text-white rounded-md px-4 py-2 hover:bg-red-500 w-full"
                                 >
-                                    Submit
+                                    Login
                                 </button>
 
                             </div>
