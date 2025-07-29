@@ -43,45 +43,6 @@ export default function Cart() {
         }
     };
 
-    // const updateQuantity = async (itemId, type) => {
-    //     try {
-    //         const res = await fetch(`/api/cart/updateQuantity`, {
-    //             method: "PATCH",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //                 Authorization: `Bearer ${localStorage.getItem("token")}`,
-    //             },
-    //             body: JSON.stringify({ itemId, type }), // type: "inc" or "dec"
-    //         });
-    //         const data = await res.json();
-    //         if (data.success) {
-    //             setCartItems(data.cart.items);
-    //         }
-    //     } catch (err) {
-    //         console.error("Quantity update failed:", err);
-    //     }
-    // };
-
-    // const clearCart = async () => {
-    //     try {
-    //         const res = await fetch(`/api/cart/clear`, {
-    //             method: "DELETE",
-    //             headers: {
-    //                 Authorization: `Bearer ${localStorage.getItem("token")}`,
-    //             },
-    //         });
-    //         const data = await res.json();
-    //         if (data.success) {
-    //             setCartItems([]);
-    //         }
-    //     } catch (err) {
-    //         console.error("Failed to clear cart:", err);
-    //     }
-    // };
-
-    const getTotal = () =>
-        cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-
     return (
         <div className="max-w-6xl mx-auto px-4 py-8">
             <h2 className="text-3xl font-bold mb-6">Your Cart</h2>
@@ -92,9 +53,11 @@ export default function Cart() {
                 <>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {cartItems.map((product) => {
-                            const imgUrl = product.img?.path
-                                ? `/uploads/${product.img.path}`
-                                : "/placeholder.jpg";
+                            const imgUrl = product.image?.path
+                                ? `/uploads/${product.image.path}`
+                                : product.image
+                                    ? `/uploads/${product.image.replace(/\\/g, "/")}`
+                                    : "/placeholder.jpg";
 
                             return (
                                 <div
@@ -147,18 +110,7 @@ export default function Cart() {
                         })}
                     </div>
 
-                    {/* <div className="mt-8 text-right space-y-4">
-                        <h3 className="text-xl font-bold">Total: ₹{getTotal().toFixed(2)}</h3>
-                        <button
-                            onClick={clearCart}
-                            className="mr-4 bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400"
-                        >
-                            Clear All
-                        </button>
-                        <button className="bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700">
-                            Proceed to Checkout
-                        </button>
-                    </div> */}
+
                 </>
             )}
         </div>

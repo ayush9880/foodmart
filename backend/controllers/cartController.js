@@ -1,7 +1,7 @@
 const Cart = require('../model/cartModel');
 
 const addToCart = async (req, res) => {
-    const userId = req.user.id; // ✅ use JWT
+    const userId = req.user.id; 
     console.log(userId)
     const { productId, name, price, quantity, img } = req.body;
 
